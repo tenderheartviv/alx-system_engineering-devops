@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Get a list of all processes with their hierarchies
+process_list=$(ps -e -o pid,ppid,user,cmd --forest)
+
+# Print the header
+printf "%-10s %-10s %-15s %s\n" "PID" "PPID" "USER" "COMMAND"
+
+# Loop through each line of the process list and print the details
+while IFS= read -r line; do
+  pid=$(echo "$line" | awk '{print $1}')
+  ppid=$(echo "$line" | awk '{print $2}')
+  user=$(echo "$line" | awk '{print $3}')
+  cmd=$(echo "$line" | awk '{print $4}')
+  printf "%-10s %-10s %-15s %s\n" "$pid" "$ppid" "$user" "$cmd"
+done <<< "$process_list"

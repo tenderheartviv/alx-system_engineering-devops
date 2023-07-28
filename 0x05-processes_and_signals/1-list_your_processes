@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+#!/bin/bash
+
 # Get a list of all processes with their hierarchies
-process_list=$(ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest)
+process_list=$(ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest)
 
 # Print the header
 printf "%-10s %-10s %-4s %-4s %-6s %-6s %-6s %-6s %-10s %-10s %s\n" \

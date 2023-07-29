@@ -2,9 +2,16 @@
 
 #!/bin/bash
 
-# Find the PIDs of processes with names containing "bash"
-pids=$(pgrep -l bash)
+# Find the PID of the Bash process
+bash_pid=$$
 
-# Print the output
-echo "$pids"
+# Find the PIDs and process names of processes containing "bash" in their name
+while read -r pid; do
+	  process_name=$(tr -d '\0' < "/proc/$pid/cmdline")
+	   if [[ $process_name == *"bash"* ]]; then
+		   echo "$pid $process_name"
+	 fi
+ done < <(ls -d /proc/[0-9]*/ 2>/dev/null | grep -o '[0-9]*')
 
+ # Print the Bash PID and its process name
+ echo "$bash_pid bash"

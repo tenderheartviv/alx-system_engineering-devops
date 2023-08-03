@@ -1,4 +1,3 @@
-@@ -0,0 +1,6 @@
 #!/usr/bin/env ruby
 
 from = ARGV[0].scan(/from:(.*?)\]/)

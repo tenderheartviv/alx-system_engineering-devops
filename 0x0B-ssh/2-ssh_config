@@ -8,3 +8,6 @@ Host *
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
     GSSAPIAuthentication yes
+    PasswordAuthentication no
+    HostbasedAuthentication no
+    	

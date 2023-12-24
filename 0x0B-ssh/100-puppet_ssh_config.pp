@@ -1,16 +1,9 @@
-# Seting up my client config file
-include stdlib
+# This is the ssh client system-wide configuration file.
+# This file provides defaults for users, and the values can be changed
+# in per-user configuration files or on the command line.
 
-file_line { 'Turn off passwd auth':
-  ensure => present,
-  path   => '/etc/ssh/ssh_config',
-  line   => '    PasswordAuthentication no',
-  replace => true,
-}
 
-file_line { 'Delare identity file':
-  ensure => present,
-  path   => '/etc/ssh/ssh_config',
-  line   => '     IdentityFile ~/.ssh/school',
-  replace => true,
-}
+Host *
+	PasswordAuthentication no
+#   	HostbasedAuthentication no
+    	IdentityFile ~/.ssh/school
